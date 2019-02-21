@@ -26,7 +26,7 @@ for (let [k, v] of myCryptoHash) {
   }
 }
 
-//Recherche (et affichage) de toutes les cryptos possédant la plus petite valo
+//Recherche (et affichage) de toutes les cryptos possédant la plus grande valo
 console.log("Voici la ou les cryptos avec la plus grande valeur ($"+maxValue+") :");
 for (let [k, v] of myCryptoHash) {
 	//on retire le symbole $ devant la valeur
@@ -34,7 +34,7 @@ for (let [k, v] of myCryptoHash) {
   // On convertir le string en float
   value = parseFloat(v);
 	if(value === maxValue){
-		console.log(" > "+ k);
+		console.log(" > "+ k+" ($"+v+")");
 	}
 }
 
@@ -61,7 +61,7 @@ for (let [k, v] of myCryptoHash) {
   // On convertir le string en float
   value = parseFloat(v);
 	if(value === minValue){
-		console.log(" > "+k);
+		console.log(" > "+k+" ($"+v+")");
 	}
 }
 
@@ -89,6 +89,33 @@ for (let [k, v] of myCryptoHash) {
 		console.log(" > "+k+" ($"+v+")");
 	}
 }
+
+// Recherche de la plus grande valo
+maxValue6k = 0;
+for (let [k, v] of myCryptoHash) {
+  //on retire le symbole $ devant la valeur
+  v = v.substr(1);
+  // On convertir le string en float
+  value = parseFloat(v);
+  //On va récupérer la/les plus grandes valeurs <6K
+  if(value > maxValue6k && value < 6000){
+		maxValue6k = value;
+  	maxCrypto = k;
+  }
+}
+
+//Recherche (et affichage) de toutes les cryptos possédant la plus grande valo <6K
+console.log("Voici la ou les cryptos avec la plus grande valeur ($"+maxValue6k+") (inférieure à $6000):");
+for (let [k, v] of myCryptoHash) {
+	//on retire le symbole $ devant la valeur
+  v = v.substr(1);
+  // On convertir le string en float
+  value = parseFloat(v);
+	if(value === maxValue6k){
+		console.log(" > "+ k+" ($"+v+")");
+	}
+}
+
 
 
 
